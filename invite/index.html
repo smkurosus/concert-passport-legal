@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Join me on Ato</title>
+
+<!-- Open Graph: this is what iMessage / WhatsApp / Slack render as a preview card.
+     These are static — GitHub Pages can't generate per-handle tags, so the card is
+     generic and the inviter's handle only appears once the page loads. -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Join me on Ato" />
+<meta property="og:description" content="Ato is a passport for the shows you've been to. Log concerts, collect city stamps, and see what your friends have seen." />
+<meta property="og:image" content="https://smkurosus.github.io/concert-passport-legal/invite/og-image.png" />
+<meta property="og:url" content="https://smkurosus.github.io/concert-passport-legal/invite/" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #0a0a0a;
+    --text: #f2f2f2;
+    --muted: #a3a3a3;
+    --line: rgba(255,255,255,0.12);
+    --surface: rgba(255,255,255,0.06);
+    --link: #8ab4ff;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #ffffff;
+      --text: #171717;
+      --muted: #55565a;
+      --line: rgba(0,0,0,0.12);
+      --surface: rgba(0,0,0,0.04);
+      --link: #2452b8;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  main {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+    text-align: center;
+  }
+  .mark {
+    width: 76px;
+    height: 76px;
+    border-radius: 18px;
+    margin: 0 auto 28px;
+    display: block;
+  }
+  h1 { font-size: 1.5rem; line-height: 1.3; margin: 0 0 8px; }
+  .lede { color: var(--muted); margin: 0 0 36px; }
+  .btn {
+    display: block;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 14px 20px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--text); color: var(--bg); }
+  .btn-secondary { background: var(--surface); color: var(--text); border-color: var(--line); }
+  .btn[hidden] { display: none; }
+  .note {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+  .note a { color: var(--link); }
+  code { background: var(--surface); padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+</style>
+</head>
+<body>
+<main>
+  <img class="mark" src="og-image.png" alt="" />
+
+  <h1 id="headline">You've been invited to Ato</h1>
+  <p class="lede">
+    Ato is a passport for the shows you've been to — log concerts, collect city
+    stamps, and see what your friends have seen.
+  </p>
+
+  <a class="btn btn-primary" id="store-btn" href="#">Get Ato</a>
+  <a class="btn btn-secondary" id="open-btn" href="#" hidden>Already have Ato? Open it</a>
+
+  <p class="note" id="note">
+    Once you're in, search for <code id="handle-hint">their handle</code> to
+    send a friend request.
+    <br /><br />
+    <a href="../">Privacy policy</a>
+  </p>
+</main>
+
+<script>
+  // Set this once the app is live and you have its App Store ID.
+  var APP_STORE_URL = null; // e.g. 'https://apps.apple.com/app/id1234567890'
+  var APP_SCHEME_URL = 'noctaconcertpassport://add-friends?inviter=';
+
+  // Mirrors validateHandle() in lib/auth/handle.ts. The handle comes from the
+  // query string, so it is untrusted — validate it, and only ever write it to
+  // the page via textContent.
+  function readHandle() {
+    var raw = new URLSearchParams(window.location.search).get('u') || '';
+    var handle = raw.trim().replace(/^@+/, '').toLowerCase();
+    if (handle.length < 3 || handle.length > 20) return null;
+    if (!/^[a-z][a-z0-9_]*[a-z0-9]$/.test(handle)) return null;
+    return handle;
+  }
+
+  var handle = readHandle();
+
+  if (handle) {
+    document.getElementById('headline').textContent = '@' + handle + ' invited you to Ato';
+    document.getElementById('handle-hint').textContent = '@' + handle;
+
+    // Deep link only makes sense when we know who to add. No auto-redirect —
+    // on iOS that shows a "Cannot Open Page" error for anyone without the app.
+    var openBtn = document.getElementById('open-btn');
+    openBtn.href = APP_SCHEME_URL + encodeURIComponent(handle);
+    openBtn.hidden = false;
+  }
+
+  var storeBtn = document.getElementById('store-btn');
+  if (APP_STORE_URL) {
+    storeBtn.href = APP_STORE_URL;
+  } else {
+    storeBtn.textContent = 'Coming soon to the App Store';
+    storeBtn.removeAttribute('href');
+    storeBtn.style.opacity = '0.6';
+  }
+</script>
+</body>
+</html>
