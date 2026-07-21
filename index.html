@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Privacy Policy — Ato (Concert Passport)</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #0a0a0a;
+    --text: #f2f2f2;
+    --muted: #a3a3a3;
+    --line: rgba(255,255,255,0.12);
+    --link: #8ab4ff;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #ffffff;
+      --text: #171717;
+      --muted: #55565a;
+      --line: rgba(0,0,0,0.12);
+      --link: #2452b8;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+  h1 { font-size: 1.6rem; margin-bottom: 4px; }
+  .updated { color: var(--muted); font-size: 0.9rem; margin-bottom: 36px; }
+  h2 { font-size: 1.15rem; margin-top: 40px; margin-bottom: 8px; border-top: 1px solid var(--line); padding-top: 32px; }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+  p, li { color: var(--text); }
+  ul { padding-left: 1.2em; }
+  li { margin-bottom: 6px; }
+  a { color: var(--link); }
+  .placeholder {
+    background: rgba(255,180,0,0.15);
+    border: 1px dashed rgba(255,180,0,0.5);
+    border-radius: 4px;
+    padding: 0 4px;
+  }
+  code { background: rgba(127,127,127,0.15); padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Privacy Policy — Ato (Concert Passport)</h1>
+  <p class="updated">Last updated: July 20, 2026</p>
+
+  <p>
+    Ato ("the app", "we", "us") is a concert-logging and social app that lets
+    you track shows you've attended and connect with friends who share your
+    concert history. This policy explains what information the app collects,
+    why, and how it's handled.
+  </p>
+
+  <h2>Information we collect</h2>
+  <p>What's collected depends on how you use the app:</p>
+  <ul>
+    <li>
+      <strong>Account identity.</strong> If you sign in with Apple, we receive
+      the identifier Apple provides (which may be a private relay email
+      address if you choose to hide your email) and, optionally, your name if
+      you share it during sign-in. If you sign in with email instead, we
+      collect the email address you enter to send a one-time sign-in link.
+    </li>
+    <li>
+      <strong>Profile information you choose to add.</strong> A handle
+      (username) and display name you pick after creating an account.
+    </li>
+    <li>
+      <strong>Content you create.</strong> Shows you log — artist, venue,
+      city, date, genre, event type, and any notes or photos you attach —
+      plus friend connections (requests sent, accepted, or declined).
+    </li>
+    <li>
+      <strong>Local, on-device data.</strong> Before you create a permanent
+      account, the app works from a temporary anonymous session so you can
+      start logging shows immediately. That data lives in local storage on
+      your device and is only sent to our servers once you sign in with Apple
+      or email.
+    </li>
+  </ul>
+  <p>
+    We do <strong>not</strong> access your camera, photo library, contacts,
+    or precise device location. Venue coordinates shown in the app come from
+    a public venue/artist lookup, not from your device's GPS.
+  </p>
+
+  <h2>How we use information</h2>
+  <ul>
+    <li>To operate your account and sync your logged shows across sessions.</li>
+    <li>To show your shows and profile to friends you've connected with, and vice versa.</li>
+    <li>To let you find and add friends by handle.</li>
+  </ul>
+  <p>
+    We do not use your information for advertising, and we do not sell or
+    share it with data brokers or ad networks. The app does not include any
+    third-party analytics or advertising SDKs.
+  </p>
+
+  <h2>Third parties we use to run the app</h2>
+  <ul>
+    <li>
+      <strong>Supabase</strong> — our backend provider. Account data, logged
+      shows, and friend connections are stored in a Supabase-hosted database
+      on our behalf, protected by row-level security so each account can only
+      access its own data (and, for shows/profile, data explicitly shared via
+      an accepted friend connection).
+    </li>
+    <li>
+      <strong>Deezer</strong> — a public music API we query by artist name to
+      fetch artist photos for your logged shows. We only send the artist name;
+      no account or personal information is sent to Deezer.
+    </li>
+  </ul>
+
+  <h2>Data retention and deletion</h2>
+  <p>
+    You can permanently delete your account at any time from
+    <strong>Settings → Delete account</strong> inside the app. This removes
+    your profile, logged shows, and friend connections from our servers, and
+    clears the data stored locally on your device.
+  </p>
+
+  <h2>Security</h2>
+  <p>
+    Data in transit is encrypted (HTTPS/TLS). Sign-in credentials and session
+    tokens are stored using your device's secure keychain storage, not
+    ordinary app storage. Server-side access controls (row-level security)
+    ensure your account data is only readable by you and, where you've
+    explicitly connected, your accepted friends.
+  </p>
+
+  <h2>Children's privacy</h2>
+  <p>
+    Ato is not directed at children under 13, and we do not knowingly collect
+    information from children under 13. If you believe a child has provided
+    us with personal information, contact us at the address below and we will
+    delete it.
+  </p>
+
+  <h2>Changes to this policy</h2>
+  <p>
+    If this policy changes, we'll update the "Last updated" date above. We
+    encourage you to review this page periodically.
+  </p>
+
+  <h2>Contact us</h2>
+  <p>
+    Questions about this policy or your data? Contact us at
+    <a href="mailto:sakuros152@gmail.com">sakuros152@gmail.com</a>.
+  </p>
+</main>
+</body>
+</html>
