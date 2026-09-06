@@ -92,10 +92,13 @@
     stamps, and see what your friends have seen.
   </p>
 
-  <a class="btn btn-primary" id="store-btn" href="#">Get setsy</a>
+  <a class="btn btn-primary" id="store-btn" href="#">Join the beta</a>
   <a class="btn btn-secondary" id="open-btn" href="#" hidden>Already have setsy? Open it</a>
 
   <p class="note" id="note">
+    setsy is in beta — the link opens TestFlight, Apple's app for trying
+    pre-release apps.
+    <br /><br />
     Once you're in, search for <code id="handle-hint">their handle</code> to
     send a friend request.
     <br /><br />
@@ -104,8 +107,10 @@
 </main>
 
 <script>
-  // Set this once the app is live and you have its App Store ID.
-  var APP_STORE_URL = null; // e.g. 'https://apps.apple.com/app/id1234567890'
+  // Where an invited person actually installs from. setsy is in TestFlight
+  // beta, so this is a public tester link, not an App Store listing. Swap it
+  // for the App Store URL at release — nothing else here needs to change.
+  var INSTALL_URL = 'https://testflight.apple.com/join/vNR23aRV';
   var APP_SCHEME_URL = 'noctaconcertpassport://add-friends?inviter=';
 
   // Mirrors validateHandle() in lib/auth/handle.ts. The handle comes from the
@@ -133,10 +138,10 @@
   }
 
   var storeBtn = document.getElementById('store-btn');
-  if (APP_STORE_URL) {
-    storeBtn.href = APP_STORE_URL;
+  if (INSTALL_URL) {
+    storeBtn.href = INSTALL_URL;
   } else {
-    storeBtn.textContent = 'Coming soon to the App Store';
+    storeBtn.textContent = 'Coming soon';
     storeBtn.removeAttribute('href');
     storeBtn.style.opacity = '0.6';
   }
